@@ -264,3 +264,14 @@
 .lesson ul li {
   margin-bottom: 8px;
 }
+/* CLICKABLE TOPIC CARDS */
+.topic-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.topic-link:hover .topic-card {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
