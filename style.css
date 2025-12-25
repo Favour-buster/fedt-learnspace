@@ -235,3 +235,32 @@
 .topic-card small {
   color: #555;
 }
+/* LESSON CONTENT */
+.lesson {
+  max-width: 900px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.lesson h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.lesson h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.lesson p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.lesson ul {
+  margin-left: 20px;
+}
+
+.lesson ul li {
+  margin-bottom: 8px;
+}
