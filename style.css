@@ -292,3 +292,17 @@
   color: #475569;
   border-radius: 10px;
 }
+/* Diagram image styling */
+.diagram-box img,
+.diagram-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Diagram container safety */
+.diagram-box {
+  overflow: hidden;
+}
