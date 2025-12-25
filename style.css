@@ -275,3 +275,11 @@
   transition: 0.3s ease;
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
+/* BACK TO TOPICS LINK */
+.back-link {
+  display: inline-block;
+  margin: 15px 0 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2563eb;
+}
