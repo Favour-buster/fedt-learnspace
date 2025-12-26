@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Template</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <h1 class="logo">FEDT LearnSpace</h1>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../pages/quiz-hub.html">Quiz Hub</a></li>
+  </ul>
+</nav>
+
+<section class="quiz-page">
+  <h2 id="courseTitle">Course Title</h2>
+  <h3 id="topicTitle">Topic Title</h3>
+
+  <form id="quizForm"></form>
+
+  <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+
+  <div id="result" class="result" style="display:none;"></div>
+
+  <button onclick="location.reload()" class="btn" id="retakeBtn" style="display:none;">
+    🔁 Retake Quiz
+  </button>
+</section>
+
+<script>
+const quizData = [
+  {
+    question: "Sample question goes here?",
+    options: [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    answer: 1,
+    explanation: "Explanation goes here."
+  }
+];
+
+const courseTitle = "GPE 395 – Cartography";
+const topicTitle = "Topic 1: Introduction to Cartography";
+
+document.getElementById("courseTitle").innerText = courseTitle;
+document.getElementById("topicTitle").innerText = topicTitle;
+
+const form = document.getElementById("quizForm");
+
+quizData.forEach((q, index) => {
+  let html = `<div class="question">
+    <p><strong>${index + 1}.</strong> ${q.question}</p>`;
+  q.options.forEach((opt, i) => {
+    html += `
+      <label>
+        <input type="radio" name="q${index}" value="${i}">
+        ${opt}
+      </label><br>`;
+  });
+  html += `</div>`;
+  form.innerHTML += html;
+});
+
+function submitQuiz() {
+  let score = 0;
+  let output = "<h3>📊 Quiz Result</h3>";
+
+  quizData.forEach((q, index) => {
+    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+    if (selected && parseInt(selected.value) === q.answer) {
+      score++;
+      output += `<p class="correct">✔ Question ${index + 1}: Correct</p>`;
+    } else {
+      output += `<p class="wrong">✖ Question ${index + 1}: Wrong</p>`;
+    }
+    output += `<small>Explanation: ${q.explanation}</small><br><br>`;
+  });
+
+  output += `<h4>Your Score: ${score} / ${quizData.length}</h4>`;
+
+  document.getElementById("result").innerHTML = output;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("retakeBtn").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
