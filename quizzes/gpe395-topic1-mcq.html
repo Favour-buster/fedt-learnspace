@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartography MCQ – Topic 1</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .question {
+      margin-bottom: 25px;
+    }
+    .result {
+      background: #f0f8ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    .correct {
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <h1 class="logo">FEDT LearnSpace</h1>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../pages/quiz-hub.html">Quiz Hub</a></li>
+  </ul>
+</nav>
+
+<section class="quiz-page">
+  <h2>🗺️ GPE 395 – Cartography</h2>
+  <h3>Topic 1: Introduction to Cartography</h3>
+
+  <form id="quizForm">
+
+    <!-- QUESTION 1 -->
+    <div class="question">
+      <p><strong>1.</strong> Cartography is best defined as:</p>
+      <label><input type="radio" name="q1" value="A"> A. Study of landforms</label><br>
+      <label><input type="radio" name="q1" value="B"> B. Science and art of map making</label><br>
+      <label><input type="radio" name="q1" value="C"> C. Measurement of weather</label><br>
+      <label><input type="radio" name="q1" value="D"> D. Analysis of population</label>
+    </div>
+
+    <!-- QUESTION 2 -->
+    <div class="question">
+      <p><strong>2.</strong> Which of the following shows the ART aspect of cartography?</p>
+      <label><input type="radio" name="q2" value="A"> A. Scale accuracy</label><br>
+      <label><input type="radio" name="q2" value="B"> B. Map projection</label><br>
+      <label><input type="radio" name="q2" value="C"> C. Symbol design and color</label><br>
+      <label><input type="radio" name="q2" value="D"> D. Coordinate system</label>
+    </div>
+
+    <button type="button" class="btn" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="result" style="display:none;"></div>
+
+  <button onclick="location.reload()" class="btn" style="display:none;" id="retakeBtn">
+    🔁 Retake Quiz
+  </button>
+</section>
+
+<script>
+function submitQuiz() {
+  let score = 0;
+  let total = 2;
+
+  let answers = {
+    q1: "B",
+    q2: "C"
+  };
+
+  let explanations = {
+    q1: "Cartography involves both scientific accuracy and artistic design in making maps.",
+    q2: "Symbol design and color represent the artistic side of cartography."
+  };
+
+  let output = "<h3>📊 Quiz Result</h3>";
+
+  for (let q in answers) {
+    let selected = document.querySelector('input[name="'+q+'"]:checked');
+    if (selected && selected.value === answers[q]) {
+      score++;
+      output += "<p class='correct'>✔ Question " + q.slice(1) + ": Correct</p>";
+    } else {
+      output += "<p class='wrong'>✖ Question " + q.slice(1) + ": Wrong</p>";
+    }
+    output += "<small>Explanation: " + explanations[q] + "</small><br><br>";
+  }
+
+  output += "<h4>Your Score: " + score + " / " + total + "</h4>";
+
+  document.getElementById("result").innerHTML = output;
+  document.getElementById("result").style.display = "block";
+  document.getElementById("retakeBtn").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
