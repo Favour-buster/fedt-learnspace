@@ -187,6 +187,9 @@ function submitQuiz() {
   document.getElementById("result").innerHTML = output;
   document.getElementById("result").style.display = "block";
   document.getElementById("retakeBtn").style.display = "inline-block";
+  // Save progress to browser
+localStorage.setItem("gpe395_topic1_completed", "true");
+localStorage.setItem("gpe395_topic1_score", score + "/" + quizData.length);
 }
 </script>
 
