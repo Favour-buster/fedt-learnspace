@@ -46,6 +46,16 @@
 
     </div>
   </section>
+<script>
+  const completed = localStorage.getItem("gpe395_topic1_completed");
 
+  if (completed) {
+    document.getElementById("cartoAchievement").innerHTML =
+      "Status: 🏅 Unlocked";
+
+    document.getElementById("quizAchievement").innerHTML =
+      "Status: 🏅 Unlocked";
+  }
+</script>
 </body>
 </html>
