@@ -462,3 +462,26 @@
   background: #fafafa;
   text-align: center;
 }
+/* BUTTON INTERACTIONS */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* CARD INTERACTIONS */
+.feature-card:hover,
+.quick-card:hover,
+.dash-card:hover,
+.dashboard-card:hover,
+.quiz-card:hover,
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
