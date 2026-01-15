@@ -562,3 +562,8 @@
 .lesson-card.green { border-top: 6px solid #27ae60; }
 .lesson-card.yellow { border-top: 6px solid #f2c94c; }
 .lesson-card.purple { border-top: 6px solid #9b51e0; }
+.progress-text {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
