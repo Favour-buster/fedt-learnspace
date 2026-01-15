@@ -115,34 +115,35 @@
 </section>
 <script>
   const cards = document.querySelectorAll(".lesson-card");
-  let currentIndex = 0;
+  let current = 0;
 
-  function showCard(index) {
-    cards.forEach((card, i) => {
-      card.classList.toggle("active", i === index);
+  function updateCards() {
+    cards.forEach((card, index) => {
+      card.classList.remove("active");
+      if (index === current) {
+        card.classList.add("active");
+      }
     });
   }
 
-  document.querySelectorAll(".next-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (currentIndex < cards.length - 1) {
-        currentIndex++;
-        showCard(currentIndex);
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("next-btn")) {
+      if (current < cards.length - 1) {
+        current++;
+        updateCards();
       }
-    });
+    }
+
+    if (e.target.classList.contains("prev-btn")) {
+      if (current > 0) {
+        current--;
+        updateCards();
+      }
+    }
   });
 
-  document.querySelectorAll(".prev-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        showCard(currentIndex);
-      }
-    });
-  });
-
-  showCard(currentIndex);
+  updateCards();
 </script>
-  
+
 </body>
 </html>
