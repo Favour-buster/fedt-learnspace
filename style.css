@@ -558,3 +558,7 @@
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.lesson-card.blue { border-top: 6px solid #2f80ed; }
+.lesson-card.green { border-top: 6px solid #27ae60; }
+.lesson-card.yellow { border-top: 6px solid #f2c94c; }
+.lesson-card.purple { border-top: 6px solid #9b51e0; }
