@@ -2,195 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Template</title>
+  <title>GPE 395 – Topic 1 Quiz | FEDT LearnSpace</title>
   <link rel="stylesheet" href="../style.css">
-</head>
+  <style>
+    .quiz-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
 
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f9fbff;
+    }
+
+    .question p {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .question label {
+      display: block;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 10px;
+      background: #e7f3ff;
+      padding: 10px;
+      border-left: 4px solid #2f80ed;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      padding: 12px 20px;
+      background: #2f80ed;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f0f7ff;
+      display: none;
+    }
+  </style>
+</head>
 <body>
 
+<!-- NAVIGATION -->
 <nav class="navbar">
   <h1 class="logo">FEDT LearnSpace</h1>
   <ul class="nav-links">
     <li><a href="../index.html">Home</a></li>
+    <li><a href="../pages/courses.html">Courses</a></li>
     <li><a href="../pages/quiz-hub.html">Quiz Hub</a></li>
+    <li><a href="../pages/profile.html">Profile</a></li>
+    <li><a href="../pages/about.html">About</a></li>
   </ul>
 </nav>
 
-<section class="quiz-page">
-  <h2 id="courseTitle">Course Title</h2>
-  <h3 id="topicTitle">Topic Title</h3>
+<div class="quiz-container">
+  <h2>🧠 GPE 395 – Topic 1 Quiz</h2>
+  <p><strong>Topic:</strong> Introduction to Cartography</p>
 
-  <form id="quizForm"></form>
+  <!-- QUESTIONS -->
 
-  <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+  <div class="question" data-correct="b">
+    <p>1. Cartography is best defined as the:</p>
+    <label><input type="radio" name="q1" value="a"> Study of weather patterns</label>
+    <label><input type="radio" name="q1" value="b"> Art and science of map making</label>
+    <label><input type="radio" name="q1" value="c"> Measurement of land area</label>
+    <label><input type="radio" name="q1" value="d"> Study of population</label>
+    <div class="answer">✔️ Correct: Art and science of map making</div>
+  </div>
 
-  <div id="result" class="result" style="display:none;"></div>
+  <div class="question" data-correct="b">
+    <p>2. One major importance of cartography is that it:</p>
+    <label><input type="radio" name="q2" value="a"> Makes geography complex</label>
+    <label><input type="radio" name="q2" value="b"> Aids navigation and planning</label>
+    <label><input type="radio" name="q2" value="c"> Replaces GIS</label>
+    <label><input type="radio" name="q2" value="d"> Is only for surveyors</label>
+    <div class="answer">✔️ Correct: Aids navigation and planning</div>
+  </div>
 
-  <button onclick="location.reload()" class="btn" id="retakeBtn" style="display:none;">
-    🔁 Retake Quiz
-  </button>
-</section>
+  <div class="question" data-correct="c">
+    <p>3. Which of the following is NOT a characteristic of a good map?</p>
+    <label><input type="radio" name="q3" value="a"> Accuracy</label>
+    <label><input type="radio" name="q3" value="b"> Clarity</label>
+    <label><input type="radio" name="q3" value="c"> Confusion</label>
+    <label><input type="radio" name="q3" value="d"> Proper scale</label>
+    <div class="answer">✔️ Correct: Confusion</div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <p>4. A map showing population distribution is a:</p>
+    <label><input type="radio" name="q4" value="a"> Topographic map</label>
+    <label><input type="radio" name="q4" value="b"> Cadastral map</label>
+    <label><input type="radio" name="q4" value="c"> Thematic map</label>
+    <label><input type="radio" name="q4" value="d"> Political map</label>
+    <div class="answer">✔️ Correct: Thematic map</div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <p>5. Cadastral cartography mainly deals with:</p>
+    <label><input type="radio" name="q5" value="a"> Climate</label>
+    <label><input type="radio" name="q5" value="b"> Relief features</label>
+    <label><input type="radio" name="q5" value="c"> Land ownership</label>
+    <label><input type="radio" name="q5" value="d"> Navigation</label>
+    <div class="answer">✔️ Correct: Land ownership</div>
+  </div>
+
+  <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+
+  <div class="result-box" id="resultBox"></div>
+
+</div>
 
 <script>
-const quizData = [
-  {
-    question: "Cartography is best described as the:",
-    options: [
-      "study of population distribution",
-      "science and art of map making",
-      "analysis of landforms only",
-      "measurement of weather elements"
-    ],
-    answer: 1,
-    explanation: "Cartography involves scientific accuracy and artistic design in the production of maps."
-  },
-  {
-    question: "Which of the following best explains the ART aspect of cartography?",
-    options: [
-      "Use of scale and projection",
-      "Accurate measurement of distance",
-      "Symbol design, colour, and layout",
-      "Use of coordinates and grids"
-    ],
-    answer: 2,
-    explanation: "The artistic side of cartography involves visual elements such as symbols, colours, and layout."
-  },
-  {
-    question: "A map is best defined as:",
-    options: [
-      "a picture of the earth",
-      "a drawing made without scale",
-      "a reduced and symbolic representation of the earth’s surface",
-      "a photograph of the environment"
-    ],
-    answer: 2,
-    explanation: "Maps are reduced, symbolic, and scaled representations of the earth or part of it."
-  },
-  {
-    question: "Which of the following is NOT a function of cartography?",
-    options: [
-      "Communication of spatial information",
-      "Navigation and route planning",
-      "Population census collection",
-      "Environmental analysis"
-    ],
-    answer: 2,
-    explanation: "Population census collection is not a direct function of cartography."
-  },
-  {
-    question: "Cartography is important in geography because it:",
-    options: [
-      "eliminates the need for fieldwork",
-      "helps in visualizing spatial data",
-      "replaces statistical analysis",
-      "discourages environmental studies"
-    ],
-    answer: 1,
-    explanation: "Cartography helps geographers visualize, analyze, and interpret spatial data."
-  },
-  {
-    question: "Which of the following best shows the SCIENTIFIC aspect of cartography?",
-    options: [
-      "Map decoration",
-      "Symbol aesthetics",
-      "Accurate scale and projection",
-      "Choice of colours"
-    ],
-    answer: 2,
-    explanation: "Accuracy in scale and projection reflects the scientific aspect of cartography."
-  },
-  {
-    question: "A good cartographic map must be:",
-    options: [
-      "colourful only",
-      "large in size",
-      "accurate, clear, and readable",
-      "freehand drawn"
-    ],
-    answer: 2,
-    explanation: "Clarity, accuracy, and readability are key qualities of a good map."
-  },
-  {
-    question: "Which profession benefits MOST directly from cartography?",
-    options: [
-      "Cartographers and geographers",
-      "Poets and writers",
-      "Musicians",
-      "Fashion designers"
-    ],
-    answer: 0,
-    explanation: "Cartography is directly used by cartographers and geographers for spatial analysis."
-  },
-  {
-    question: "The main purpose of symbols on a map is to:",
-    options: [
-      "decorate the map",
-      "make the map colourful",
-      "represent real-world features",
-      "increase map size"
-    ],
-    answer: 2,
-    explanation: "Symbols are used to represent real-world features in a simplified form."
-  },
-  {
-    question: "Which statement about cartography is TRUE?",
-    options: [
-      "It deals only with artistic drawings",
-      "It ignores accuracy",
-      "It combines science, art, and technology",
-      "It is outdated in modern geography"
-    ],
-    answer: 2,
-    explanation: "Modern cartography combines scientific accuracy, artistic design, and technological tools."
+  function submitQuiz() {
+    let score = 0;
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach(q => {
+      const correct = q.dataset.correct;
+      const selected = q.querySelector("input:checked");
+
+      if (selected && selected.value === correct) {
+        score++;
+      }
+
+      q.querySelector(".answer").style.display = "block";
+    });
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+      <h3>🎉 Quiz Completed!</h3>
+      <p>Your Score: <strong>${score} / ${questions.length}</strong></p>
+      <a href="gpe395-topic1-mcq.html" class="btn">🔁 Retake Quiz</a>
+    `;
+
+    localStorage.setItem("gpe395_topic1_completed", "true");
+    localStorage.setItem("gpe395_topic1_score", score + "/" + questions.length);
   }
-];
-
-const courseTitle = "GPE 395 – Cartography";
-const topicTitle = "Topic 1: Introduction to Cartography";
-
-document.getElementById("courseTitle").innerText = courseTitle;
-document.getElementById("topicTitle").innerText = topicTitle;
-
-const form = document.getElementById("quizForm");
-
-quizData.forEach((q, index) => {
-  let html = `<div class="question">
-    <p><strong>${index + 1}.</strong> ${q.question}</p>`;
-  q.options.forEach((opt, i) => {
-    html += `
-      <label>
-        <input type="radio" name="q${index}" value="${i}">
-        ${opt}
-      </label><br>`;
-  });
-  html += `</div>`;
-  form.innerHTML += html;
-});
-
-function submitQuiz() {
-  let score = 0;
-  let output = "<h3>📊 Quiz Result</h3>";
-
-  quizData.forEach((q, index) => {
-    const selected = document.querySelector(`input[name="q${index}"]:checked`);
-    if (selected && parseInt(selected.value) === q.answer) {
-      score++;
-      output += `<p class="correct">✔ Question ${index + 1}: Correct</p>`;
-    } else {
-      output += `<p class="wrong">✖ Question ${index + 1}: Wrong</p>`;
-    }
-    output += `<small>Explanation: ${q.explanation}</small><br><br>`;
-  });
-
-  output += `<h4>Your Score: ${score} / ${quizData.length}</h4>`;
-
-  document.getElementById("result").innerHTML = output;
-  document.getElementById("result").style.display = "block";
-  document.getElementById("retakeBtn").style.display = "inline-block";
-  // Save progress to browser
-localStorage.setItem("gpe395_topic1_completed", "true");
-localStorage.setItem("gpe395_topic1_score", score + "/" + quizData.length);
-}
 </script>
 
 </body>
