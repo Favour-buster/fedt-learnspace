@@ -567,3 +567,36 @@
   color: #777;
   margin-bottom: 10px;
 }
+.table-title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.compare-table th {
+  background: #4f46e5;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+}
+
+.compare-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.compare-table tr:hover {
+  background: #f9fafb;
+}
