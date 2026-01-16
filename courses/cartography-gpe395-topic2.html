@@ -1,1 +1,146 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Introduction to Cartography – FEDT LearnSpace</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <h1 class="logo">FEDT LearnSpace</h1>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/dashboard.html">Dashboard</a></li>
+      <li><a href="../pages/courses.html">Courses</a></li>
+      <li><a href="../pages/quiz-hub.html">Quiz Hub</a></li>
+      <li><a href="../pages/profile.html">Profile</a></li>
+      <li><a href="../pages/about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- LESSON CONTENT -->
+<section class="lesson">
+
+  <!-- SECTION 1 -->
+  <div class="lesson-card active blue">
+    <h2>🕰️ Meaning of Cartographic Evolution</h2>
+    <p class="progress-text">Step 1 of 4</p>
+
+    <p>
+      The <strong>evolution of cartography</strong> refers to the gradual
+      development of map making from ancient times to the modern digital age.
+    </p>
+
+    <div class="info-box">
+      🧠 In simple terms:  
+      Cartography has improved as human knowledge and technology improved.
+    </div>
+
+    <button class="next-btn">Next ➡️</button>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="lesson-card green">
+    <h2>🏺 Ancient Cartography</h2>
+    <p class="progress-text">Step 2 of 4</p>
+
+    <div class="card-grid">
+      <div class="mini-card">🪨 Early maps drawn on stones and clay</div>
+      <div class="mini-card">🇪🇬 Egyptians mapped the River Nile</div>
+      <div class="mini-card">🇬🇷 Greeks introduced scientific ideas</div>
+      <div class="mini-card">📜 Ptolemy developed map projection concepts</div>
+    </div>
+
+    <div class="exam-tip">
+      🎯 <strong>Exam Tip:</strong>  
+      Always mention <em>Ptolemy</em> when discussing ancient cartography.
+    </div>
+
+    <button class="prev-btn">⬅️ Back</button>
+    <button class="next-btn">Next ➡️</button>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="lesson-card yellow">
+    <h2>🧭 Medieval & Early Modern Cartography</h2>
+    <p class="progress-text">Step 3 of 4</p>
+
+    <ul class="check-list">
+      <li>✔️ Use of religious influence in medieval maps</li>
+      <li>✔️ Portolan charts improved sea navigation</li>
+      <li>✔️ Discovery of new lands improved accuracy</li>
+      <li>✔️ Printing press helped spread maps</li>
+    </ul>
+
+    <div class="info-box">
+      🌍 Maps became more accurate due to exploration and trade.
+    </div>
+
+    <button class="prev-btn">⬅️ Back</button>
+    <button class="next-btn">Next ➡️</button>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="lesson-card purple">
+    <h2>💻 Modern Cartography</h2>
+    <p class="progress-text">Step 4 of 4</p>
+
+    <div class="card-grid">
+      <div class="mini-card">🖥️ Computer-based map production</div>
+      <div class="mini-card">🛰️ Use of satellite imagery</div>
+      <div class="mini-card">🗺️ Geographic Information Systems (GIS)</div>
+      <div class="mini-card">📱 Digital and web mapping</div>
+    </div>
+
+    <div class="info-box">
+      🧠 <strong>Quick Check:</strong><br>
+      Can you mention two differences between ancient and modern cartography?
+    </div>
+
+    <a href="../quizzes/gpe395-topic2-mcq.html" class="btn">
+      🧠 Take Topic Quiz
+    </a>
+
+    <button class="prev-btn">⬅️ Back</button>
+  </div>
+
+</section>
+
+<script>
+  const cards = document.querySelectorAll(".lesson-card");
+  let current = 0;
+
+  function updateCards() {
+    cards.forEach((card, index) => {
+      card.classList.remove("active");
+      if (index === current) {
+        card.classList.add("active");
+      }
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("next-btn")) {
+      if (current < cards.length - 1) {
+        current++;
+        updateCards();
+      }
+    }
+
+    if (e.target.classList.contains("prev-btn")) {
+      if (current > 0) {
+        current--;
+        updateCards();
+      }
+    }
+  });
+
+  updateCards();
+</script>
+
+</body>
+</html>
+
