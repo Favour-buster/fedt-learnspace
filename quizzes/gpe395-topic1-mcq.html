@@ -59,6 +59,25 @@
       background: #f0f7ff;
       display: none;
     }
+    .correct {
+  background: #e6ffed;
+  border-left: 5px solid #27ae60;
+}
+
+.wrong {
+  background: #ffe6e6;
+  border-left: 5px solid #e74c3c;
+}
+
+.correct-label {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.wrong-label {
+  color: #e74c3c;
+  font-weight: 600;
+}
   </style>
 </head>
 <body>
@@ -133,32 +152,52 @@
 </div>
 
 <script>
-  function submitQuiz() {
-    let score = 0;
-    const questions = document.querySelectorAll(".question");
+function submitQuiz() {
+  let score = 0;
+  const questions = document.querySelectorAll(".question");
 
-    questions.forEach(q => {
-      const correct = q.dataset.correct;
-      const selected = q.querySelector("input:checked");
+  questions.forEach(q => {
+    const correctAnswer = q.dataset.correct;
+    const selected = q.querySelector("input:checked");
+    const options = q.querySelectorAll("label");
 
-      if (selected && selected.value === correct) {
-        score++;
+    options.forEach(label => {
+      const input = label.querySelector("input");
+
+      if (input.value === correctAnswer) {
+        label.classList.add("correct-label");
       }
 
-      q.querySelector(".answer").style.display = "block";
+      if (selected && input === selected && input.value !== correctAnswer) {
+        label.classList.add("wrong-label");
+      }
     });
 
-    const resultBox = document.getElementById("resultBox");
-    resultBox.style.display = "block";
-    resultBox.innerHTML = `
-      <h3>🎉 Quiz Completed!</h3>
-      <p>Your Score: <strong>${score} / ${questions.length}</strong></p>
-      <a href="gpe395-topic1-mcq.html" class="btn">🔁 Retake Quiz</a>
-    `;
+    if (selected && selected.value === correctAnswer) {
+      score++;
+      q.classList.add("correct");
+    } else {
+      q.classList.add("wrong");
+    }
 
-    localStorage.setItem("gpe395_topic1_completed", "true");
-    localStorage.setItem("gpe395_topic1_score", score + "/" + questions.length);
-  }
+    q.querySelector(".answer").style.display = "block";
+  });
+
+  const resultBox = document.getElementById("resultBox");
+  resultBox.style.display = "block";
+  resultBox.innerHTML = `
+    <h3>🎉 Quiz Completed!</h3>
+    <p>Your Score: <strong>${score} / ${questions.length}</strong></p>
+    <p style="margin-top:10px;">
+      ✅ Green = Correct Answer <br>
+      ❌ Red = Wrong Answer
+    </p>
+    <a href="gpe395-topic1-mcq.html" class="btn">🔁 Retake Quiz</a>
+  `;
+
+  localStorage.setItem("gpe395_topic1_completed", "true");
+  localStorage.setItem("gpe395_topic1_score", score + "/" + questions.length);
+}
 </script>
 
 </body>
